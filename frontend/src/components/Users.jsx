@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Users() {
+const Users = () => {
   const [users, setUsers] = useState([
     {
       ID: 101,
@@ -13,7 +13,7 @@ function Users() {
     },
   ]);
   return (
-    <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
+    <div className="d-flex vh-100 bg-dark justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
         <Link to="/create" className="btn btn-success float-start mb-3">
           Add +
@@ -38,7 +38,9 @@ function Users() {
                   <td>{user.Age}</td>
                   <td>{user.Email}</td>
                   <td>
-                    <button>Edit</button>
+                    <Link to="/update" className="btn btn-dark">
+                      Update
+                    </Link>
                     <button>Delete</button>
                   </td>
                 </tr>
@@ -49,6 +51,6 @@ function Users() {
       </div>
     </div>
   );
-}
+};
 
 export default Users;
