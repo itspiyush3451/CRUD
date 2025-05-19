@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function UpdateUser() {
+  const { id } = useParams();
+  const [userid, setUserid] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/getUser/${id}`);
+        console.log(response.data);
+        // setUserid(user.userid || "");
+        // setName(user.name || "");
+        // setAge(user.age || "");
+        // setEmail(user.email || "");
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+    fetchUsers();
+  }, [id]);
+
   return (
     <div className="d-flex vh-100 bg-dark justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-4 shadow-lg">
@@ -21,6 +46,8 @@ function UpdateUser() {
               id="userId"
               placeholder="Enter ID"
               className="form-control border-primary"
+              value={userid}
+              onChange={(e) => setUserid(e.target.value)}
             />
           </div>
 
@@ -36,6 +63,8 @@ function UpdateUser() {
               id="userName"
               placeholder="Enter Name"
               className="form-control border-primary"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -51,6 +80,8 @@ function UpdateUser() {
               id="userAge"
               placeholder="Enter Age"
               className="form-control border-primary"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
             />
           </div>
 
@@ -66,6 +97,8 @@ function UpdateUser() {
               id="userEmail"
               placeholder="Enter Email"
               className="form-control border-primary"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 

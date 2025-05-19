@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const CreateUser = () => {
-  const [id, setId] = useState("");
+  const [userid, setUserid] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const CreateUser = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3000/createUser", {
-        id,
+        userid,
         name,
         age,
         email,
@@ -47,7 +47,7 @@ const CreateUser = () => {
               id="userId"
               placeholder="Enter ID"
               className="form-control border-primary"
-              value={id}
+              value={userid}
               onChange={(e) => setId(e.target.value)}
             />
           </div>

@@ -77,15 +77,15 @@ const Users = () => {
                 </tr>
               ) : (
                 users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
+                  <tr key={user.userid}>
+                    <td>{user.userid}</td>
                     <td>{user.name}</td>
                     <td>{user.age}</td>
                     <td>{user.email}</td>
                     <td>
                       <div className="btn-group" role="group">
                         <Link
-                          to={`/update/${user.id}`}
+                          to={`/update/${user._id}`}
                           className="btn btn-primary me-2"
                         >
                           Update

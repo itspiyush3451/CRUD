@@ -6,15 +6,13 @@ import Users from "./components/Users";
 import CreateUser from "./components/CreateUser";
 import UpdateUser from "./components/UpdateUser";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
       <Router>
         <Routes>
           <Route path="/" element={<Users />} />
           <Route path="/create" element={<CreateUser />} />
-          <Route path="/update" element={<UpdateUser />} />
+          <Route path="/update/:id" element={<UpdateUser />} />
         </Routes>
       </Router>
     </div>
